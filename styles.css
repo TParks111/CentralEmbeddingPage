@@ -1,37 +1,12 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
-
-@custom-variant dark (&:is(.dark *));
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-border: var(--border);
-  --color-ring: var(--ring);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-}
-
 :root {
   --background: #07100f;
   --foreground: #eef2eb;
-  --primary: #d6a266;
-  --primary-foreground: #07100f;
-  --muted: #111c1a;
-  --muted-foreground: #96a39e;
+  --accent: #d6a266;
+  --muted: #96a39e;
   --border: rgba(213, 224, 218, 0.14);
-  --ring: #d6a266;
-  --radius: 0.75rem;
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
 * {
@@ -44,14 +19,14 @@ html {
 }
 
 body {
-  margin: 0;
   min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
   background:
     radial-gradient(circle at 88% 18%, rgba(214, 162, 102, 0.08), transparent 28rem),
     radial-gradient(circle at 10% 82%, rgba(75, 131, 118, 0.08), transparent 26rem),
     var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, sans-serif;
 }
 
 a {
@@ -86,7 +61,7 @@ a {
 .brand {
   width: max-content;
   gap: 0.75rem;
-  font-weight: 620;
+  font-weight: 650;
   letter-spacing: -0.02em;
 }
 
@@ -104,7 +79,7 @@ a {
 .brand-mark span {
   display: block;
   height: 2px;
-  background: var(--primary);
+  background: var(--accent);
 }
 
 .brand-mark span:nth-child(2) {
@@ -118,8 +93,8 @@ a {
 
 .header-meta {
   gap: 0.5rem;
-  color: var(--muted-foreground);
-  font-family: var(--font-geist-mono), monospace;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -145,8 +120,13 @@ a {
 .open-link:focus-visible,
 .site-footer a:hover,
 .site-footer a:focus-visible {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .intro {
@@ -159,8 +139,8 @@ a {
 
 .eyebrow {
   margin: 0 0 1rem;
-  color: var(--primary);
-  font-family: var(--font-geist-mono), monospace;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -170,7 +150,7 @@ h1 {
   max-width: 14ch;
   margin: 0;
   font-size: clamp(2.75rem, 7vw, 7rem);
-  font-weight: 510;
+  font-weight: 520;
   letter-spacing: -0.065em;
   line-height: 0.92;
 }
@@ -179,7 +159,7 @@ h1 {
   max-width: 34ch;
   margin: 0 0 0.45rem;
   justify-self: end;
-  color: var(--muted-foreground);
+  color: var(--muted);
   font-size: clamp(1rem, 1.2vw, 1.125rem);
   line-height: 1.6;
 }
@@ -204,8 +184,8 @@ h1 {
 
 .model-chrome p {
   margin: 0;
-  color: var(--muted-foreground);
-  font-family: var(--font-geist-mono), monospace;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -218,8 +198,8 @@ h1 {
 }
 
 .model-index {
-  color: var(--primary);
-  font-family: var(--font-geist-mono), monospace;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
 .model-frame {
@@ -245,8 +225,8 @@ h1 {
   display: grid;
   place-content: center;
   gap: 0.9rem;
-  color: var(--muted-foreground);
-  font-family: var(--font-geist-mono), monospace;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-align: center;
@@ -264,8 +244,8 @@ h1 {
   display: block;
   width: 45%;
   height: 100%;
-  background: var(--primary);
-  content: '';
+  background: var(--accent);
+  content: "";
   animation: load 1.6s ease-in-out infinite alternate;
 }
 
@@ -275,7 +255,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  color: var(--muted-foreground);
+  color: var(--muted);
   font-size: 0.8125rem;
 }
 
@@ -291,8 +271,12 @@ h1 {
 }
 
 @keyframes load {
-  from { transform: translateX(0); }
-  to { transform: translateX(120%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120%);
+  }
 }
 
 @media (max-width: 700px) {
@@ -324,7 +308,7 @@ h1 {
 }
 
 @media (max-width: 430px) {
-  .brand span:last-child {
+  .brand > span:last-child {
     display: none;
   }
 
@@ -345,7 +329,7 @@ h1 {
   }
 
   .loading-line::after {
-    animation: none;
     width: 100%;
+    animation: none;
   }
 }
